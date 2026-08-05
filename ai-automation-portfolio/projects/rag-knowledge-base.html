@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Company Knowledge Base | Wilson Tchinda</title>
+  <meta name="description" content="Case study: a RAG-powered company knowledge base built with n8n, OpenAI, Supabase and Google Drive.">
+  <meta name="theme-color" content="#071A33">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="brand-mark">W</span><span>Wilson Tchinda</span></a>
+  <nav><a href="../index.html#work">Work</a><a href="../index.html#capabilities">Capabilities</a><a class="nav-cta" href="../index.html#contact">Let's talk <span>↗</span></a></nav>
+</header>
+
+<main class="case-study">
+  <section class="case-hero">
+    <a class="back-link" href="../index.html#work">← Back to selected work</a>
+    <p class="eyebrow">CASE STUDY / 01</p>
+    <h1>AI-Powered Company<br><em>Knowledge Base</em></h1>
+    <p class="case-lead">A Retrieval-Augmented Generation system that transforms business documents into an instantly searchable AI knowledge assistant.</p>
+    <div class="case-stack"><span>n8n</span><span>OpenAI</span><span>Supabase</span><span>Google Drive</span></div>
+  </section>
+
+  <section class="case-section split">
+    <div><p class="eyebrow">THE PROBLEM</p><h2>The information exists. Finding it is the problem.</h2></div>
+    <div><p>Businesses accumulate SOPs, policies, onboarding guides, process manuals, and internal documentation. As the library grows, employees can spend unnecessary time opening files, searching for keywords, and figuring out which document contains the answer.</p><p>The goal was to make that knowledge accessible at the speed of conversation.</p></div>
+  </section>
+
+  <section class="case-section">
+    <div class="section-heading compact"><div><p class="eyebrow">THE ARCHITECTURE</p><h2>Two workflows. One knowledge system.</h2></div></div>
+    <div class="architecture">
+      <div class="arch-step"><span>01</span><b>Google Drive</b><small>Document source</small></div>
+      <div class="arrow">→</div><div class="arch-step"><span>02</span><b>Document Processing</b><small>Load & prepare content</small></div>
+      <div class="arrow">→</div><div class="arch-step"><span>03</span><b>Embeddings</b><small>Semantic representation</small></div>
+      <div class="arrow">→</div><div class="arch-step"><span>04</span><b>Supabase</b><small>Vector knowledge base</small></div>
+      <div class="arrow">→</div><div class="arch-step"><span>05</span><b>AI Agent</b><small>Retrieve & answer</small></div>
+    </div>
+    <div class="image-frame"><img src="../assets/rag-architecture.png" alt="Full n8n RAG workflow showing document ingestion and knowledge retrieval"></div>
+  </section>
+
+  <section class="case-section split">
+    <div><p class="eyebrow">01 / INGESTION</p><h2>Turn documents into searchable knowledge.</h2></div>
+    <div><p>Documents are placed in Google Drive. The ingestion workflow downloads the file, processes the content, generates embeddings, and stores the resulting knowledge in Supabase Vector Store.</p><div class="flow-line">Google Drive <span>→</span> Download <span>→</span> Process <span>→</span> Embeddings <span>→</span> Supabase</div></div>
+  </section>
+
+  <section class="case-section split alt">
+    <div><p class="eyebrow">02 / RETRIEVAL</p><h2>Ask the knowledge base in natural language.</h2></div>
+    <div><p>The user submits a question through the chat interface. The AI Agent can use the vector store as its knowledge source, retrieve relevant context, and formulate an answer grounded in the indexed documents. Conversation memory supports follow-up questions.</p><div class="flow-line">Question <span>→</span> AI Agent <span>→</span> Semantic Search <span>→</span> Context <span>→</span> Answer</div></div>
+  </section>
+
+  <section class="case-section">
+    <div class="section-heading compact"><div><p class="eyebrow">VALIDATION</p><h2>I tested the system with a controlled document set.</h2></div><p class="section-intro">Five fictional NexaCore Solutions SOPs were created to test factual, numerical, policy, exception, and conversational retrieval.</p></div>
+    <div class="test-grid">
+      <div><span>01</span><b>Customer Onboarding</b><small>Customer Success</small></div>
+      <div><span>02</span><b>Expense Reimbursement</b><small>Finance</small></div>
+      <div><span>03</span><b>Security Incident Response</b><small>IT</small></div>
+      <div><span>04</span><b>Refund & Cancellation</b><small>Billing</small></div>
+      <div><span>05</span><b>Hiring & Onboarding</b><small>HR</small></div>
+    </div>
+  </section>
+
+  <section class="case-section validation">
+    <div class="validation-copy"><p class="eyebrow">LIVE TEST</p><h2>Does it retrieve the right answer?</h2><p>I asked the agent: <strong>“What are the incident severity levels?”</strong></p><p>The system retrieved information from the IT Security Incident Response SOP and returned the relevant severity classification.</p><ul><li>Severity 1 — Critical</li><li>Severity 2 — High</li><li>Severity 3 — Medium</li><li>Severity 4 — Low</li></ul></div>
+    <div class="image-frame"><img src="../assets/rag-validation.png" alt="RAG agent test showing a question about incident severity levels and the generated answer"></div>
+  </section>
+
+  <section class="case-section">
+    <p class="eyebrow">WHAT THIS DEMONSTRATES</p>
+    <div class="cap-grid case-cap">
+      <div class="cap"><span>01</span><h3>System Design</h3><p>Separate ingestion and retrieval pipelines with clear data flow.</p></div>
+      <div class="cap"><span>02</span><h3>RAG Architecture</h3><p>Private business knowledge is retrieved instead of relying only on model memory.</p></div>
+      <div class="cap"><span>03</span><h3>Integration</h3><p>Google Drive, n8n, OpenAI and Supabase connected into one system.</p></div>
+      <div class="cap"><span>04</span><h3>Testing</h3><p>A controlled corpus and targeted questions used to validate retrieval behavior.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section business-use">
+    <p class="eyebrow">WHERE THIS CAN GO</p><h2>One architecture. Many business applications.</h2>
+    <div class="use-grid">
+      <div><b>Customer Support</b><span>“What's our refund policy?”</span></div>
+      <div><b>HR</b><span>“What's the onboarding process?”</span></div>
+      <div><b>Operations</b><span>“What's the escalation procedure?”</span></div>
+      <div><b>Compliance</b><span>“What documentation is required?”</span></div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <p class="eyebrow">THE BIGGER IDEA</p>
+    <h2>Information shouldn't become less useful because a company has more of it.</h2>
+    <p>The objective is simple: make organizational knowledge accessible at the speed of conversation.</p>
+    <a class="button primary" href="../index.html#contact">Build something useful <span>↗</span></a>
+  </section>
+</main>
+<footer><span>© 2026 Wilson Tchinda</span><span>AI Automation & Business Systems</span></footer>
+</body>
+</html>
