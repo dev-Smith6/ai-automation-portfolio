@@ -78,3 +78,174 @@ footer{max-width:var(--max);margin:auto;padding:30px 24px 45px;border-top:1px so
   display: flex;
   gap: 20px;
 }
+
+/* RAG Case Study — System & Engineering Sections */
+
+.system-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 42px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.system-node {
+  flex: 1;
+  min-width: 145px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255,255,255,.025);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.system-node span,
+.decision-card > span,
+.testing-process span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--blue-soft);
+}
+
+.system-node b {
+  font-size: 15px;
+}
+
+.system-node small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.system-connector {
+  display: flex;
+  align-items: center;
+  color: var(--blue-soft);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+
+/* Engineering decisions */
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 42px;
+}
+
+.decision-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255,255,255,.025);
+}
+
+.decision-card h3 {
+  margin: 14px 0 10px;
+  font-size: 18px;
+}
+
+.decision-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+
+/* Testing methodology */
+
+.testing-process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 42px;
+}
+
+.testing-process > div {
+  padding: 25px;
+  border-left: 2px solid var(--blue-soft);
+  background: rgba(255,255,255,.025);
+}
+
+.testing-process b {
+  display: block;
+  margin: 12px 0 9px;
+  font-size: 15px;
+}
+
+.testing-process p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* Production considerations */
+
+.production-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  margin-top: 42px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.production-grid > div {
+  padding: 28px;
+  background: rgba(255,255,255,.025);
+}
+
+.production-grid b {
+  font-size: 15px;
+}
+
+.production-grid p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .testing-process {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .system-flow {
+    flex-wrap: wrap;
+  }
+
+  .system-connector {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .decision-grid,
+  .testing-process,
+  .production-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .system-flow {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .system-node {
+    min-width: 0;
+  }
+}
