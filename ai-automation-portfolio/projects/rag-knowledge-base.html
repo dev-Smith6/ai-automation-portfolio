@@ -30,7 +30,59 @@
     <div><p class="eyebrow">THE PROBLEM</p><h2>The information exists. Finding it is the problem.</h2></div>
     <div><p>Businesses accumulate SOPs, policies, onboarding guides, process manuals, and internal documentation. As the library grows, employees can spend unnecessary time opening files, searching for keywords, and figuring out which document contains the answer.</p><p>The goal was to make that knowledge accessible at the speed of conversation.</p></div>
   </section>
+<section class="case-section">
+  <div class="section-heading compact">
+    <div>
+      <p class="eyebrow">SYSTEM AT A GLANCE</p>
+      <h2>From business documents to grounded answers.</h2>
+    </div>
+    <p class="section-intro">
+      The system separates knowledge ingestion from knowledge retrieval,
+      allowing documents to be processed once and queried repeatedly.
+    </p>
+  </div>
 
+  <div class="system-flow">
+    <div class="system-node">
+      <span>01</span>
+      <b>Google Drive</b>
+      <small>Document source</small>
+    </div>
+
+    <div class="system-connector">→</div>
+
+    <div class="system-node">
+      <span>02</span>
+      <b>n8n Ingestion</b>
+      <small>Process & prepare</small>
+    </div>
+
+    <div class="system-connector">→</div>
+
+    <div class="system-node">
+      <span>03</span>
+      <b>Embeddings</b>
+      <small>Semantic representation</small>
+    </div>
+
+    <div class="system-connector">→</div>
+
+    <div class="system-node">
+      <span>04</span>
+      <b>Supabase</b>
+      <small>Vector knowledge base</small>
+    </div>
+
+    <div class="system-connector">→</div>
+
+    <div class="system-node">
+      <span>05</span>
+      <b>AI Agent</b>
+      <small>Retrieve & answer</small>
+    </div>
+  </div>
+</section>
+  
   <section class="case-section">
     <div class="section-heading compact"><div><p class="eyebrow">THE ARCHITECTURE</p><h2>Two workflows. One knowledge system.</h2></div></div>
     <div class="architecture">
@@ -54,6 +106,58 @@
   </section>
 
   <section class="case-section">
+  <div class="section-heading compact">
+    <div>
+      <p class="eyebrow">ENGINEERING DECISIONS</p>
+      <h2>Why the system is designed this way.</h2>
+    </div>
+  </div>
+
+  <div class="decision-grid">
+
+    <div class="decision-card">
+      <span>01</span>
+      <h3>Separate ingestion from retrieval</h3>
+      <p>
+        Document processing happens independently from user queries.
+        This means the knowledge base can be prepared once and queried
+        repeatedly without reprocessing the entire document library.
+      </p>
+    </div>
+
+    <div class="decision-card">
+      <span>02</span>
+      <h3>Use semantic retrieval</h3>
+      <p>
+        Vector search allows the system to retrieve information based on
+        semantic meaning rather than relying only on exact keyword matches.
+      </p>
+    </div>
+
+    <div class="decision-card">
+      <span>03</span>
+      <h3>Keep business knowledge external</h3>
+      <p>
+        Company information lives in the organization's knowledge base
+        rather than being hard-coded into the AI workflow.
+        This makes the system easier to update as documentation changes.
+      </p>
+    </div>
+
+    <div class="decision-card">
+      <span>04</span>
+      <h3>Design for expansion</h3>
+      <p>
+        The architecture can be extended with additional document sources,
+        authentication, monitoring, metadata filtering, and more advanced
+        retrieval strategies as requirements grow.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+  <section class="case-section">
     <div class="section-heading compact"><div><p class="eyebrow">VALIDATION</p><h2>I tested the system with a controlled document set.</h2></div><p class="section-intro">Five fictional NexaCore Solutions SOPs were created to test factual, numerical, policy, exception, and conversational retrieval.</p></div>
     <div class="test-grid">
       <div><span>01</span><b>Customer Onboarding</b><small>Customer Success</small></div>
@@ -64,6 +168,46 @@
     </div>
   </section>
 
+<section class="case-section">
+  <div class="section-heading compact">
+    <div>
+      <p class="eyebrow">TESTING METHODOLOGY</p>
+      <h2>Built, then challenged with real questions.</h2>
+    </div>
+    <p class="section-intro">
+      Instead of validating the workflow only by checking whether it runs,
+      I created a controlled document set and tested whether the agent could
+      retrieve specific information from the knowledge base.
+    </p>
+  </div>
+
+  <div class="testing-process">
+    <div>
+      <span>01</span>
+      <b>Create controlled documents</b>
+      <p>Five fictional company SOPs covering different departments and processes.</p>
+    </div>
+
+    <div>
+      <span>02</span>
+      <b>Index the knowledge</b>
+      <p>Documents were processed and stored in the vector knowledge base.</p>
+    </div>
+
+    <div>
+      <span>03</span>
+      <b>Ask targeted questions</b>
+      <p>Questions were designed to test whether relevant information could be retrieved.</p>
+    </div>
+
+    <div>
+      <span>04</span>
+      <b>Inspect the response</b>
+      <p>The generated answer was checked against the source documentation.</p>
+    </div>
+  </div>
+</section>
+  
   <section class="case-section validation">
     <div class="validation-copy"><p class="eyebrow">LIVE TEST</p><h2>Does it retrieve the right answer?</h2><p>I asked the agent: <strong>“What are the incident severity levels?”</strong></p><p>The system retrieved information from the IT Security Incident Response SOP and returned the relevant severity classification.</p><ul><li>Severity 1 — Critical</li><li>Severity 2 — High</li><li>Severity 3 — Medium</li><li>Severity 4 — Low</li></ul></div>
     <div class="image-frame"><img src="../assets/rag-validation.png" alt="RAG agent test showing a question about incident severity levels and the generated answer"></div>
@@ -89,6 +233,51 @@
     </div>
   </section>
 
+<section class="case-section production">
+  <div class="section-heading compact">
+    <div>
+      <p class="eyebrow">PRODUCTION CONSIDERATIONS</p>
+      <h2>A prototype is not the same thing as a production system.</h2>
+    </div>
+  </div>
+
+  <div class="production-grid">
+
+    <div>
+      <b>Access control</b>
+      <p>
+        Different teams may require access to different parts of the
+        company's knowledge base.
+      </p>
+    </div>
+
+    <div>
+      <b>Document lifecycle</b>
+      <p>
+        Production deployments need reliable handling of new, updated,
+        and deleted documents.
+      </p>
+    </div>
+
+    <div>
+      <b>Retrieval evaluation</b>
+      <p>
+        Larger deployments should use a repeatable evaluation set to
+        measure retrieval quality and answer accuracy.
+      </p>
+    </div>
+
+    <div>
+      <b>Observability</b>
+      <p>
+        Logging, error handling, and monitoring would make failures
+        easier to detect and troubleshoot.
+      </p>
+    </div>
+
+  </div>
+</section>
+  
   <section class="closing">
     <p class="eyebrow">THE BIGGER IDEA</p>
     <h2>Information shouldn't become less useful because a company has more of it.</h2>
